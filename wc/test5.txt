@@ -1,0 +1,9 @@
+#include<stdio.h>
+int main(){
+
+//hehe
+printf("hello world"); 
+/*heheda
+*/
+return 0;
+}

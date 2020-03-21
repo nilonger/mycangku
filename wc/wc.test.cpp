@@ -2,16 +2,16 @@
 #include<stdlib.h>
 #include <string.h>
 
-int x,y,z,k,konghang;//xå­—ç¬¦æ•° ; yè¯æ•° ï¼›zè¡Œæ•° ; k æ³¨é‡Šè¡Œæ•° 
+int x,y,z,k,konghang;//x×Ö·ûÊı ; y´ÊÊı £»zĞĞÊı ; k ×¢ÊÍĞĞÊı 
 
-int m;      //ä¸æ˜¯ç©ºæ–‡ä»¶æ—¶  m=1
+int m;      //²»ÊÇ¿ÕÎÄ¼şÊ±  m=1
  
-//å­—ç¬¦æ•° 
+//×Ö·ûÊı 
 void CountC(char fname[]){
 	FILE* fp=NULL;
-	 if((fp=fopen(fname,"r"))==NULL)  //ä¸è¦ æ”¾åœ¨ä¸»å‡½æ•°é‡Œé¢ 
+	 if((fp=fopen(fname,"r"))==NULL)  //²»Òª ·ÅÔÚÖ÷º¯ÊıÀïÃæ 
 	{
-		printf("æ‰“ä¸å¼€æ–‡ä»¶\n"); 
+		printf("´ò²»¿ªÎÄ¼ş\n"); 
 		exit(0);
 	}
 	
@@ -19,76 +19,77 @@ void CountC(char fname[]){
 	ch=fgetc(fp);
 	while(ch!=EOF)
 	{
-		if(ch>='!'&&ch<='~')  //ASCII  ä»33åˆ°126 
+		if(ch>='!'&&ch<='~')  //ASCII  ´Ó33µ½126 
 		x++;
 		ch=fgetc(fp);
 		
 	}
-	if(x==0)m=0;      //m=0  åˆ™ä¸º  ç©ºæ–‡ä»¶ 
+	if(x==0)m=0;      //m=0  ÔòÎª  ¿ÕÎÄ¼ş 
 	fclose(fp);
 }
 
-//è¯æ•°
+//´ÊÊı
 void CountW(char fname[]){
 	FILE* fp=NULL;
 	 if((fp=fopen(fname,"r"))==NULL)
 	{
-		printf("æ‰“ä¸å¼€æ–‡ä»¶\n"); 
+		printf("´ò²»¿ªÎÄ¼ş\n"); 
 		exit(0);
 	}
 	
 	char ch;
-	int flag=0;       //ç”¨äºåˆ¤æ–­æ˜¯å¦è¦ +1 ,flagè¦å…ˆç½®ä¸º0 
+	int flag=0;       //ÓÃÓÚÅĞ¶ÏÊÇ·ñÒª +1 ,flagÒªÏÈÖÃÎª0 
 	ch=fgetc(fp);
 	while(ch!=EOF)
 	{
-		if(!(ch>='A'&&ch<='Z'||ch>='a'&&ch<='z')){  //å¦‚æœæ˜¯éå­—æ¯å­—ç¬¦ï¼Œè®©flagä¸º0 ||ch=='.'||ch=='_'
+		if(!(ch>='A'&&ch<='Z'||ch>='a'&&ch<='z')){  //Èç¹ûÊÇ·Ç×ÖÄ¸×Ö·û£¬ÈÃflagÎª0 ||ch=='.'||ch=='_'
             flag = 0;
         }
-		else if((flag ==0)&&(ch>='A'&&ch<='Z'||ch>='a'&&ch<='z'))      //å¦‚æœæ˜¯å­—æ¯å­—ç¬¦ä¸”flagåŸå€¼ä¸º0ï¼Œflagç½®1ï¼Œå•è¯æ•°åŠ ä¸€
+		else if((flag ==0)&&(ch>='A'&&ch<='Z'||ch>='a'&&ch<='z'))      //Èç¹ûÊÇ×ÖÄ¸×Ö·ûÇÒflagÔ­ÖµÎª0£¬flagÖÃ1£¬µ¥´ÊÊı¼ÓÒ»
 		{  
             flag = 1; 
             y++;
         }
         ch=fgetc(fp);
 	}
-//	y--;            //å•ç‹¬æµ‹è¯•  çš„æ—¶å€™è¦åŠ ä¸Š  ,ä¸çŸ¥é“ä¸ºä»€ä¹ˆè¦ -1 
+//	y--;            //µ¥¶À²âÊÔ  µÄÊ±ºòÒª¼ÓÉÏ  ,²»ÖªµÀÎªÊ²Ã´Òª -1 
 	if(m==0) y=0;
 	fclose(fp);
 } 
 
-//è¡Œæ•° 
+//ĞĞÊı 
 int CountL(char fname[]){
 	FILE* fp=NULL;
 	 if((fp=fopen(fname,"r"))==NULL)
 	{
-		printf("æ‰“ä¸å¼€æ–‡ä»¶\n"); 
+		printf("´ò²»¿ªÎÄ¼ş\n"); 
 		exit(0);
 	}
 	
 	char ch;
 	ch=fgetc(fp);
-	z++;            //  å•ç‹¬æµ‹è¯•   çš„æ—¶å€™è¦å»æ‰ 
+	z++;            //  µ¥¶À²âÊÔ   µÄÊ±ºòÒªÈ¥µô 
 	while(ch!=EOF)
 	{
 		if(ch=='\n')
 		z++;
 		ch=fgetc(fp);
 	}
-	if(m==0) z=0;      //ä¸èƒ½z--   ç©ºæ–‡ä»¶è¿è¡Œä¼šå‡ºé”™ 
+	if(m==0) z=0;      //²»ÄÜz--   ¿ÕÎÄ¼şÔËĞĞ»á³ö´í 
 	fclose(fp);
 	return(z);
 }
 
-//æ³¨é‡Šè¡Œ 
+
 void CountA(char fname[]){
 	FILE* fp=NULL;
 	 if((fp=fopen(fname,"r"))==NULL)
 	{
-		printf("æ‰“ä¸å¼€æ–‡ä»¶\n"); 
+		printf("´ò²»¿ªÎÄ¼ş\n"); 
 		exit(0);
 	}
 	
+//×¢ÊÍĞĞ 	
 	char ch; 
 	ch=fgetc(fp);
 	while(ch!=EOF)
@@ -98,8 +99,8 @@ void CountA(char fname[]){
 			ch=fgetc(fp);
 			if(ch=='/')
 			{
-			    k++;   //æ³¨é‡Šè¡Œ  +1 
-			    ch=fgetc(fp);          //è·å¾—æ–°çš„å­—ç¬¦ï¼Œå¹¶é‡æ–°å¼€å§‹å¾ªç¯ 
+			    k++;   //×¢ÊÍĞĞ  +1 
+			    ch=fgetc(fp);          //»ñµÃĞÂµÄ×Ö·û£¬²¢ÖØĞÂ¿ªÊ¼Ñ­»· 
 			    continue;
 			}  
 			else if(ch=='*')
@@ -108,12 +109,12 @@ void CountA(char fname[]){
 				
 				while(ch!=EOF)
 				{	
-					if(ch=='\n')	k++;    //å¤šè¡Œæ³¨é‡Šçš„ æ¯ä¸ªå›è½¦éƒ½è¦ +1
+					if(ch=='\n')	k++;    //¶àĞĞ×¢ÊÍµÄ Ã¿¸ö»Ø³µ¶¼Òª +1
 					if(ch=='*')
 					ch=fgetc(fp);
 					if(ch=='/') 
 					{
-					    k++;		//å¤šè¡Œæ³¨é‡Šå®Œæ•´ï¼Œè¡Œæ•°+1ï¼Œå¹¶è·³å‡ºç¬¬äºŒå±‚å¾ªç¯ 
+					    k++;		//¶àĞĞ×¢ÊÍÍêÕû£¬ĞĞÊı+1£¬²¢Ìø³öµÚ¶ş²ãÑ­»· 
 						break; 
 					}    
 					ch=fgetc(fp);
@@ -125,18 +126,18 @@ void CountA(char fname[]){
 		}
 		ch=fgetc(fp);
 	}
-	printf("æ³¨é‡Šè¡Œï¼š%d\n",k);
-	rewind(fp);             //æŒ‡å›æ–‡ä»¶å¼€å¤´ 
+	printf("×¢ÊÍĞĞ£º%d\n",k);
+	rewind(fp);             //Ö¸»ØÎÄ¼ş¿ªÍ· 
 
 
-//ç©ºè¡Œ 
+//¿ÕĞĞ 
 	int flag=0;
-	int num=0;      //ä¸¤ä¸ªæ¢è¡Œç¬¦ä¹‹é—´çš„å­—ç¬¦æ•° 
+	int num=0;      //Á½¸ö»»ĞĞ·ûÖ®¼äµÄ×Ö·ûÊı 
 	konghang=0;
 	
 	ch=fgetc(fp);
 	while(ch!=EOF){
-		if(ch=='\n'&&num==0)    //ç¬¬ä¸€ä¸ªæ¢è¡Œç¬¦ 
+		if(ch=='\n'&&num==0)    //µÚÒ»¸ö»»ĞĞ·û 
 		{
 			flag=1;
 			konghang++;
@@ -145,22 +146,22 @@ void CountA(char fname[]){
 		else if(ch!='\n'&&flag==1)
 			num++;                 
 
-		else if(ch!='\n'&&flag==0&&num==0)  //ç¬¬ä¸€è¡Œ æ˜¯ä»£ç è¡Œ çš„æƒ…å†µ 
+		else if(ch!='\n'&&flag==0&&num==0)  //µÚÒ»ĞĞ ÊÇ´úÂëĞĞ µÄÇé¿ö 
 			{
 				num++;
 				flag=1;
 			}
-		else if(ch=='\n'&&flag==1&&num>=0){  //ä»£ç è¡Œåˆ°æœ€åï¼ŒæŠŠç´¯åŠ çš„å­—ç¬¦æ•°  å½’0 
+		else if(ch=='\n'&&flag==1&&num>=0){  //´úÂëĞĞµ½×îºó£¬°ÑÀÛ¼ÓµÄ×Ö·ûÊı  ¹é0 
 			num=0;
 			flag=0; 
 		}	
 		
 		ch=fgetc(fp);	
 	} 	
-	printf("ç©ºè¡Œæ•°ï¼š%d\n",konghang);
+	printf("¿ÕĞĞÊı£º%d\n",konghang);
 	rewind(fp);
 	
-//ä»£ç è¡Œ	
+//´úÂëĞĞ	
 	int num1=0,daimahang=0,flag1=1;;
 	ch=fgetc(fp);
 	while(ch!=EOF){
@@ -194,13 +195,7 @@ void CountA(char fname[]){
 					 if(ch=='*')
 					{
 						ch=fgetc(fp);
-						if(ch=='/')
-						{
-//							num1=0;
-//							flag1=1;
-//							ch=fgetc(fp);      //æŠŠåé¢çš„ '\n' å¸æ”¶æ‰ 
-						} 
-						break;
+						if(ch=='/')	break;
 					}
 					ch=fgetc(fp);
 				}
@@ -209,9 +204,9 @@ void CountA(char fname[]){
 			
 		ch=fgetc(fp);
 	} 
-	daimahang++;      //æœ€åä¸€è¡Œæ²¡æœ‰'\n',è‡ªåŠ¨  +1 
+	daimahang++;      //×îºóÒ»ĞĞÃ»ÓĞ'\n',×Ô¶¯  +1 
 	if(m==0) daimahang=0;
-	printf("ä»£ç è¡Œæ•°ï¼š%d\n",daimahang);
+	printf("´úÂëĞĞÊı£º%d\n",daimahang);
 	fclose(fp);
 	 
 } 
@@ -222,49 +217,49 @@ int main(){
   char fu[5];
   char fname[50];
   while(1){
-  	m=1; //ä¸æ˜¯ç©ºæ–‡ä»¶æ˜¯  m=1
+  	m=1; //²»ÊÇ¿ÕÎÄ¼şÊÇ  m=1
   	
   	x=y=z=k=konghang=0;
-  	printf("è¾“å…¥æ–‡ä»¶åï¼š");
+  	printf("ÊäÈëÎÄ¼şÃû£º");
     scanf("%s",fname);
   
      CountC(fname) ;
-	printf("å­—ç¬¦æ•°ä¸ºï¼š%d\n",x);
+	printf("×Ö·ûÊıÎª£º%d\n",x);
        
     CountW(fname);
-   	printf("å•è¯æ•°ä¸ºï¼š%d\n",y);  
+   	printf("µ¥´ÊÊıÎª£º%d\n",y);  
 		 
 	CountL(fname);
- 	printf("è¡Œæ•°ï¼š%d\n",z);
+ 	printf("ĞĞÊı£º%d\n",z);
  	
  	CountA(fname);
  	
   }
   
 	 	   
-/* printf("-c:ç»Ÿè®¡å­—ç¬¦æ•°\n -w:ç»Ÿè®¡å•è¯æ•°\n -l:ç»Ÿè®¡è¡Œæ•°\n -9:é€€å‡º\n");
+/* printf("-c:Í³¼Æ×Ö·ûÊı\n -w:Í³¼Æµ¥´ÊÊı\n -l:Í³¼ÆĞĞÊı\n -9:ÍË³ö\n");
   
   while(1)
-  { x=0;y=1;z=1;k=0;     //è¡Œæ•°å…ˆè®¾ç½®ä¸º  1 
-    printf("è¯·è¾“å…¥ä½ çš„æ“ä½œc/w/l/a/9:");
+  { x=0;y=1;z=1;k=0;     //ĞĞÊıÏÈÉèÖÃÎª  1 
+    printf("ÇëÊäÈëÄãµÄ²Ù×÷c/w/l/a/9:");
     scanf("%s",fu);
     
   	if(fu[0]=='c')
      {
 	   CountC(fname) ;
-       printf("å­—ç¬¦æ•°ä¸ºï¼š%d\n",x); 
+       printf("×Ö·ûÊıÎª£º%d\n",x); 
      }
      
      if(fu[0]=='w')
 	 {
 	 	CountW(fname);
-     	printf("å•è¯æ•°ä¸ºï¼š%d\n",y);	
+     	printf("µ¥´ÊÊıÎª£º%d\n",y);	
 	 }
 	 
 	 if(fu[0]=='l')
 	 {
 	 	CountL(fname);
-	 	printf("è¡Œæ•°ï¼š%d\n",z);
+	 	printf("ĞĞÊı£º%d\n",z);
 	 }
 	 
 	 if(fu[0]=='a')
